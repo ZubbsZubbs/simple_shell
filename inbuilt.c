@@ -1,7 +1,7 @@
 #include "myshell.h"
 
 /**
- * _closecheck - closes the shell
+ * _exitclose - closes the shell
  * @info: Structure containing potential arguments. Used to maintain
  * constant function prototype.
  * Return: closes with a given close status

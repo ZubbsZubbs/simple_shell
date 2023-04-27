@@ -1,10 +1,10 @@
 #include "myshell.h"
-
 /**
- * _strlen - Return the length of a string
- * @s: Pointer to the string to evaluate
+ * _strcpy - Copies the string
+ * @dest: Pointer to destination buffer
+ * @src: Pointer to source string
  *
- * Return: The length of the string
+ * Return: Pointer to destination buffer
  */
 char *_strcpy(char *dest, char *src)
 {
@@ -23,11 +23,10 @@ char *_strcpy(char *dest, char *src)
 
 
 /**
- * _strcmp - Compare two strings
- * @s1: First string to compare
- * @s2: Second string to compare
+ * _strdup - duplicate string
+ * @str: Pointer to string to be duplicated
  *
- * Return: 0 if strings are equal, negative value if s1 < s2, positive value if s1 > s2
+ * Return: Pointer to duplicated string on success, NULL on failure
  */
 char *_strdup(const char *str)
 {
@@ -47,11 +46,8 @@ char *_strdup(const char *str)
 }
 
 /**
- * starts_with - Check if a string starts with a given prefix
- * @haystack: String to evaluate
- * @needle: Prefix to search for
- *
- * Return: Pointer to the first character of the prefix in the string, or NULL if not found
+ * _puts - Writes a string to standard output
+ * @str: Pointer to string to be written
  */
 void _puts(char *str)
 {
@@ -66,11 +62,10 @@ void _puts(char *str)
 	}
 }
 /**
- * _strcat - Concatenate two strings
- * @dest: Destination string
- * @src: Source string to append to destination
+ * _putchar - Writes a character to standard output
+ * @c: Character to be written
  *
- * Return: Pointer to the destination string
+ * Return: 1 on success, -1 on failure
  */
 int _putchar(char c)
 {
