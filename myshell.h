@@ -108,13 +108,6 @@ typedef struct inbuilt
 int hsh(info_t *, char **);
 int find_inbuilt(info_t *);
 
-<<<<<<< HEAD
-=======
-void find_cmd(info_t *);
-void fork_cmd(info_t *);
-
-int is_cmd(info_t *, char *);
->>>>>>> d908dfdb6e6913c76fc733996ddd9340dcccee1a
 
 void fork_command(info_t *);
 int replace_string(char **, char *);
