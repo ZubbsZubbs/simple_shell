@@ -45,11 +45,11 @@ int write_history(info_t *info)
 	for (node = info->history; node; node = node->next)
 	{
 
-		_puts(node->str, ft);
-		_puts('\n', ft);
+		_dutsfd(node->str, ft);
+		_dutfd('\n', ft);
 
-		_dutsfd((node->str, fd);
-		_putft('\n', fd);
+		_dutsfd(node->str, ft);
+		_putft('\n', ft);
 
 	}
 	_putft(BUF_FLUSH, ft);

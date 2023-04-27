@@ -46,7 +46,7 @@ int _mysetenv(info_t *info)
 	if (info->argc != 3)
 	{
 
-		_puts("Arguments incorrect\n");
+		_eputs("Arguments incorrect\n");
 
 		_eputsft("Arguments incorrect\n");
 
@@ -70,7 +70,7 @@ int _meunsetenv(info_t *info)
 	if (info->argc == 1)
 	{
 
-		_puts("Too few arguements.\n");
+		_eputs("Too few arguements.\n");
 
 		_eputsft("Too few arguements.\n");
 
