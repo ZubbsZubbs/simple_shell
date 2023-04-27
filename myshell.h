@@ -107,35 +107,33 @@ typedef struct inbuilt
 
 int hsh(info_t *, char **);
 int find_inbuilt(info_t *);
-<<<<<<< HEAD
+
 void find_cmd(info_t *);
 void fork_cmd(info_t *);
 
 int is_cmd(info_t *, char *);
-=======
 
 void fork_command(info_t *);
 int replace_string(char **, char *);
 int is_command(info_t *, char *);
->>>>>>> 4c291d4674df983b39f162bebf3157f5f94844fb
+
 char *dup_chars(char *, int, int);
 char *find_path(info_t *, char *, char *);
 
 int loophsh(char **);
 
-<<<<<<< HEAD
+
 void _eputs(char *);
 int _eputchar(char);
 int _putft(char c, int ft);
 int _putsft(char *str, int ft);
-=======
+
 int _myexit(info_t *);
 void _eputsft(char *);
 int _dputchar(char);
 int _dutfd(char c, int fd);
 int _dutsfd(char *str, int fd);
 int replace_vars(info_t *);
->>>>>>> 4c291d4674df983b39f162bebf3157f5f94844fb
 
 int _strlen(char *);
 int _strcmp(char *, char *);
