@@ -14,7 +14,7 @@ int hsh(info_t *info, char **av)
 	while (r != -1 && builtin_ret != -2)
 	{
 		clear_info(info);
-		if (interactive(info))
+		if (_interactive(info))
 			_eputsft("$ ");
 		_eputcharr(BUF_FLUSH);
 		r = get_input(info);
@@ -25,13 +25,13 @@ int hsh(info_t *info, char **av)
 			if (builtin_ret == -1)
 				find_inbuilt(info);
 		}
-		else if (interactive(info))
+		else if (_interactive(info))
 			_eputcharr('\n');
 		free_info(info, 0);
 	}
 	write_histo(info);
 	free_info(info, 1);
-	if (!interactive(info) && info->status)
+	if (!_interactive(info) && info->status)
 		exit(info->status);
 	if (builtin_ret == -2)
 	{
@@ -105,7 +105,7 @@ void find_cmd(info_t *info)
 	}
 	else
 	{
-		if ((interactive(info) || _getenv(info, "PATH=")
+		if ((_interactive(info) || _getenv(info, "PATH=")
 					|| info->argv[0][0] == '/') && is_command(info, info->argv[0]))
 			fork_command(info);
 		else if (*(info->arg) != '\n')

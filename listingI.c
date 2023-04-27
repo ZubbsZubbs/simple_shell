@@ -31,7 +31,7 @@ char **list_to_stringsnow(list_t *head)
 	char **strs;
 	char *str;
 
-	if (!head || !i)
+	if (!head || !k)
 		return (NULL);
 	strs = malloc(sizeof(char *) * (k + 1));
 	if (!strs)
@@ -66,7 +66,7 @@ size_t print_list(const list_t *f)
 
 	while (f)
 	{
-		_eputsft(convert_number(h->num, 10, 0));
+		_eputsft(convert_number(f->num, 10, 0));
 		_eputcharr(':');
 		_eputcharr(' ');
 		_eputsft(f->str ? f->str : "(nil)");

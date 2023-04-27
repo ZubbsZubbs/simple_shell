@@ -159,6 +159,7 @@ int is_delim(char, char *);
 int _isalpha(int);
 int _toaa(char *);
 
+int _interactive(info_t *);
 int _errtoaa(char *);
 void print_error(info_t *, char *);
 int print_d(int, int);
