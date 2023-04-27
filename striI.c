@@ -15,7 +15,7 @@ char *_strcpy(char *dest, char *src)
 	while (src[k])
 	{
 		dest[k] = src[k];
-		i++;
+		k++;
 	}
 	dest[k] = 0;
 	return (dest);
@@ -72,7 +72,7 @@ int _eputcharr(char c)
 	static int j;
 	static char buf[WRITE_BUF_SIZE];
 
-	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
+	if (c == BUF_FLUSH || j >= WRITE_BUF_SIZE)
 	{
 		write(1, buf, j);
 		j = 0;
