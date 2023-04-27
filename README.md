@@ -1,2 +1,1 @@
-# simple_shell
-A simple shell project in collaboration with Mitchel Okoth
+This is a simple shell project
