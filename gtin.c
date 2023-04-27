@@ -67,6 +67,6 @@ void free_info(info_t *info, int all)
 		bfree((void **)info->cmd_buf);
 		if (info->readfd > 2)
 			close(info->readfd);
-		_putchar(BUF_FLUSH);
+		_eputcharr(BUF_FLUSH);
 	}
 }

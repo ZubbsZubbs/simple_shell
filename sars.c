@@ -1,13 +1,13 @@
 #include "myshell.h"
 /**
- * is_chain - Checks if there is a command chain in the command buffer
+ * is_chainnow - Checks if there is a command chain in the command buffer
  * @info: Pointer to info_t struct
  * @buf: Pointer to the command buffer
  * @p: Pointer to the index in the command buffer
  *
  * Return: 1 if a command chain is found, 0 otherwise
  */
-int is_chain(info_t *info, char *buf, size_t *p)
+int is_chainnow(info_t *info, char *buf, size_t *p)
 {
 	size_t j = *p;
 
@@ -42,7 +42,7 @@ int is_chain(info_t *info, char *buf, size_t *p)
  * @i: Current index in the command buffer
  * @len: Length of the command buffer
  */
-void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
+void check_chainnow(info_t *info, char *buf, size_t *p, size_t i, size_t len)
 {
 	size_t j = *p;
 

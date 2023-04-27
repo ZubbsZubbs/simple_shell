@@ -15,18 +15,18 @@ int hsh(info_t *info, char **av)
 	{
 		clear_info(info);
 		if (interactive(info))
-			_puts("$ ");
-		_eputchar(BUF_FLUSH);
+			_eputsft("$ ");
+		_eputcharr(BUF_FLUSH);
 		r = get_input(info);
 		if (r != -1)
 		{
 			set_info(info, av);
-			builtin_ret = find_builtin(info);
+			builtin_ret = find_inbuilt(info);
 			if (builtin_ret == -1)
 				find_cmd(info);
 		}
 		else if (interactive(info))
-			_putchar('\n');
+			_eputcharr('\n');
 		free_info(info, 0);
 	}
 	write_history(info);
@@ -43,23 +43,23 @@ int hsh(info_t *info, char **av)
 }
 
 /**
- * find_builtin - find a builtin command in the command table
+ * find_inbuilt - find a builtin command in the command table
  * @info: a pointer to the info_t struct
  *
  * Return: the exit status of the builtin command or -1 if not found
  */
-int find_builtin(info_t *info)
+int find_inbuilt(info_t *info)
 {
 	int i, built_in_ret = -1;
-	builtin_table builtintbl[] = {
+	 inbuilt_table builtintbl[] = {
 		{"exit", _myexit},
-		{"env", _myenv},
-		{"help", _myhelp},
-		{"history", _myhistory},
-		{"setenv", _mysetenv},
-		{"unsetenv", _myunsetenv},
-		{"cd", _mycd},
-		{"alias", _myalias},
+		{"env", _cdenv},
+		{"help", _cdhelp},
+		{"history", _cdhisto},
+		{"setenv", _cdsetenv},
+		{"unsetenv", _cdunsetenv},
+		{"cd", _cdcd},
+		{"alias", _cdalias},
 		{NULL, NULL}
 	};
 
@@ -100,13 +100,13 @@ void find_cmd(info_t *info)
 	if (path)
 	{
 		info->path = path;
-		fork_cmd(info);
+		fork_command(info);
 	}
 	else
 	{
 		if ((interactive(info) || _getenv(info, "PATH=")
-					|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
-			fork_cmd(info);
+					|| info->argv[0][0] == '/') && is_command(info, info->argv[0]))
+			fork_command(info);
 		else if (*(info->arg) != '\n')
 		{
 			info->status = 127;
@@ -116,12 +116,12 @@ void find_cmd(info_t *info)
 }
 
 /**
- * fork_cmd - create a child process and execute the command
+ * fork_command - create a child process and execute the command
  * @info: a pointer to the info_t struct
  *
  * Return: void
  */
-void fork_cmd(info_t *info)
+void fork_command(info_t *info)
 {
 	pid_t child_pid;
 

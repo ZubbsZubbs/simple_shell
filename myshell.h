@@ -107,19 +107,35 @@ typedef struct inbuilt
 
 int hsh(info_t *, char **);
 int find_inbuilt(info_t *);
+<<<<<<< HEAD
 void find_cmd(info_t *);
 void fork_cmd(info_t *);
 
 int is_cmd(info_t *, char *);
+=======
+
+void fork_command(info_t *);
+int replace_string(char **, char *);
+int is_command(info_t *, char *);
+>>>>>>> 4c291d4674df983b39f162bebf3157f5f94844fb
 char *dup_chars(char *, int, int);
 char *find_path(info_t *, char *, char *);
 
 int loophsh(char **);
 
+<<<<<<< HEAD
 void _eputs(char *);
 int _eputchar(char);
 int _putft(char c, int ft);
 int _putsft(char *str, int ft);
+=======
+int _myexit(info_t *);
+void _eputsft(char *);
+int _dputchar(char);
+int _dutfd(char c, int fd);
+int _dutsfd(char *str, int fd);
+int replace_vars(info_t *);
+>>>>>>> 4c291d4674df983b39f162bebf3157f5f94844fb
 
 int _strlen(char *);
 int _strcmp(char *, char *);
@@ -128,8 +144,7 @@ char *_strcat(char *, char *);
 
 char *_strcpy(char *, char *);
 char *_strdup(const char *);
-void _puts(char *);
-int _putchar(char);
+int _eputcharr(char);
 
 
 char *_strncpy(char *, char *, int);
@@ -185,7 +200,7 @@ int write_histo(info_t *info);
 int read_histo(info_t *info);
 int build_histo_list(info_t *info, char *buf, int linecount);
 int renumber_histo(info_t *info);
-
+int build_history_list(info_t *info, char *buf, int linecount);
 list_t *add_node(list_t **, const char *, int);
 list_t *add_node_end(list_t **, const char *, int);
 size_t print_list_str(const list_t *);

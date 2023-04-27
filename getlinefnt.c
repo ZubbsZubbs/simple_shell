@@ -57,7 +57,7 @@ ssize_t get_input(info_t *info)
 	ssize_t m = 0;
 	char **buf_p = &(info->arg), *p;
 
-	_putchar(BUF_FLUSH);
+	_eputcharr(BUF_FLUSH);
 	m = input_buf(info, &buf, &len);
 	if (m == -1) /* EOF */
 		return (-1);
@@ -166,7 +166,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
  */
 void sigintHandler(__attribute__((unused))int sig_num)
 {
-	_puts("\n");
-	_puts("$ ");
-	_putchar(BUF_FLUSH);
+	_eputsft("\n");
+	_eputsft("$ ");
+	_eputcharr(BUF_FLUSH);
 }

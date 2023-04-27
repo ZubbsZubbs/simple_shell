@@ -15,7 +15,7 @@ char *_strcpy(char *dest, char *src)
 	while (src[k])
 	{
 		dest[k] = src[k];
-		i++;
+		k++;
 	}
 	dest[k] = 0;
 	return (dest);
@@ -46,10 +46,10 @@ char *_strdup(const char *str)
 }
 
 /**
- * _puts - Writes a string to standard output
+ * _eputs - Writes a string to standard output
  * @str: Pointer to string to be written
  */
-void _puts(char *str)
+void _eputsft(char *str)
 {
 	int k = 0;
 
@@ -57,22 +57,22 @@ void _puts(char *str)
 		return;
 	while (str[k] != '\0')
 	{
-		_putchar(str[k]);
+		_eputcharr(str[k]);
 		k++;
 	}
 }
 /**
- * _putchar - Writes a character to standard output
+ * _eputcharr - Writes a character to standard output
  * @c: Character to be written
  *
  * Return: 1 on success, -1 on failure
  */
-int _putchar(char c)
+int _eputcharr(char c)
 {
 	static int j;
 	static char buf[WRITE_BUF_SIZE];
 
-	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
+	if (c == BUF_FLUSH || j >= WRITE_BUF_SIZE)
 	{
 		write(1, buf, j);
 		j = 0;
