@@ -9,7 +9,7 @@
  */
 int _posthisto(info_t *info)
 {
-	print_list(info->histo);
+	print_list(info->history);
 	return (0);
 }
 
@@ -68,12 +68,12 @@ int set_alias(info_t *info, char *str)
  */
 int print_alias(list_t *node)
 {
-	char *ptr = NULL, *a = NULL;
+	char *ptr = NULL, *c = NULL;
 
 	if (node)
 	{
 		ptr = _strchr(node->str, '=');
-		for (c = node->str; c <= p; c++)
+		for (c = node->str; c <= ptr; c++)
 		_eputcharr(*c);
 		_eputcharr('\'');
 		_eputsft(ptr + 1);

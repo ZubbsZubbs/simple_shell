@@ -18,8 +18,8 @@ int _exitclose(info_t *info)
 		{
 			info->status = 2;
 			print_error(info, "Compromised digits: ");
-			_eputsft(info->argv[1]);
-			_eputcharr('\n');
+			_eputs(info->argv[1]);
+			_eputchar('\n');
 			return (1);
 		}
 		info->err_num = _errtoaa(info->argv[1]);
@@ -41,34 +41,34 @@ int _Pecd(info_t *info)
 
 	p = getcwd(buffer, 1024);
 	if (!p)
-		_eputsft("TODO: >>getcwd error message<<\n");
+		_eputs("TODO: >>getcwd error message<<\n");
 	if (!info->argv[1])
 	{
 		dir = _getenv(info, "HOME=");
 		if (!dir)
 			chdirec_ret = /* TODO: to do what? */
-				chdirec((dir = _getenv(info, "PWD=")) ? dir : "/");
+				chdir((dir = _getenv(info, "PWD=")) ? dir : "/");
 		else
-			chdirec_ret = chdirec(dir);
+			chdirec_ret = chdir(dir);
 	}
 	else if (_strcmp(info->argv[1], "-") == 0)
 	{
 		if (!_getenv(info, "OLDPWD="))
 		{
-			_eputsft(s);
+			_eputs(p);
 			_eputcharr('\n');
 			return (1);
 		}
-		_eputsft(_getenv(info, "OLDPWD=")), _eputcharr('\n');
+		_eputs(_getenv(info, "OLDPWD=")), _eputcharr('\n');
 		chdirec_ret = /* TODO: to do? */
-			chdirec((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
+			chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
 	}
 	else
-		chdirec_ret = chdirec(info->argv[1]);
+		chdirec_ret = chdir(info->argv[1]);
 	if (chdirec_ret == -1)
 	{
 		print_error(info, "won’t cd to ");
-		_eputsft(info->argv[1]), _eputcharr('\n');
+		_eputs(info->argv[1]), _eputchar('\n');
 	}
 	else
 	{
@@ -90,8 +90,8 @@ int _helpme(info_t *info)
 	char **arg_array;
 
 	arg_array = info->argv;
-	_eputsft("help works. Implementation awaiting \n");
+	_eputs("help works. Implementation awaiting \n");
 	if (0)
-		_eputsft(*arg_array);
+		_eputs(*arg_array);
 	return (0);
 }
