@@ -23,13 +23,13 @@ int hsh(info_t *info, char **av)
 			set_info(info, av);
 			builtin_ret = find_inbuilt(info);
 			if (builtin_ret == -1)
-				find_cmd(info);
+				find_inbuilt(info);
 		}
 		else if (interactive(info))
 			_eputcharr('\n');
 		free_info(info, 0);
 	}
-	write_history(info);
+	write_histo(info);
 	free_info(info, 1);
 	if (!interactive(info) && info->status)
 		exit(info->status);
@@ -51,8 +51,8 @@ int hsh(info_t *info, char **av)
 int find_inbuilt(info_t *info)
 {
 	int i, built_in_ret = -1;
-	 inbuilt_table builtintbl[] = {
-		{"exit", _myexit},
+	inbuilt_table builtintbl[] = {
+		{"exit", _cdexit},
 		{"env", _cdenv},
 		{"help", _cdhelp},
 		{"history", _cdhisto},
@@ -62,6 +62,7 @@ int find_inbuilt(info_t *info)
 		{"alias", _cdalias},
 		{NULL, NULL}
 	};
+	
 
 	for (i = 0; builtintbl[i].type; i++)
 		if (_strcmp(info->argv[0], builtintbl[i].type) == 0)

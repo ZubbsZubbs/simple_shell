@@ -10,7 +10,7 @@ int _errtoaa(char *s)
 {
 	int j = 0;
 
-	unsigned long t result = 0;
+	unsigned long int result = 0;
 
 	if (*s == '+')
 		s++;  /* TODO: why does this make main return 255? */
@@ -54,18 +54,18 @@ void print_error(info_t *info, char *estr)
  *
  * Return: number of characters printed
  */
-int print_d(nt input, int fd)
+int print_d(int input, int fd)
 {
-	int (*_eputcharr)(char) = _eputcharr;
+	int (*_putchar)(char) = _putchar;
 	int j, count = 0;
 	unsigned int _abs_, current;
 
 	if (fd == STDERR_FILENO)
-		_eputcharr = _eputcharr;
+		_putchar = _eputcharr;
 	if (input < 0)
 	{
 		_abs_ = -input;
-		_eputcharr('-');
+		_dputchar('-');
 		count++;
 	}
 	else
@@ -75,12 +75,12 @@ int print_d(nt input, int fd)
 	{
 		if (_abs_ / j)
 		{
-			_eputcharr('0' + current / j);
+			_dputchar('0' + current / j);
 			count++;
 		}
 		current %= j;
 	}
-	_eputcharr('0' + current);
+	_dputchar('0' + current);
 	count++;
 
 	return (count);
@@ -113,7 +113,7 @@ char *convert_number(long int num, int base, int flags)
 	*ptr = '\0';
 
 	do	{
-		*--ptr = array[n % base];
+		*--ptr = array[no % base];
 		no /= base;
 	} while (no != 0);
 
