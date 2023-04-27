@@ -59,7 +59,7 @@ int _atoi(char *s)
 		{
 			flag = 1;
 			effect *= 10;
-			effect += (s[i] - '0');
+			effect += (s[j] - '0');
 		}
 		else if (flag == 1)
 			flag = 2;
