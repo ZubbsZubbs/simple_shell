@@ -8,16 +8,16 @@
  */
 char *get_history_file(info_t *info)
 {
-	char *buf, *direc;
+	char *buf, *dir;
 
-	direc = _getenv(info, "HOME=");
-	if (!direc)
+	dir = _getenv(info, "HOME=");
+	if (!dir)
 		return (NULL);
 	buf = malloc(sizeof(char) * (_strlen(direc) + _strlen(HIST_FILE) + 2));
 	if (!buf)
 		return (NULL);
 	buf[0] = 0;
-	_strcpy(buf, direc);
+	_strcpy(buf, dir);
 	_strcat(buf, "/");
 	_strcat(buf, HIST_FILE);
 	return (buf);
@@ -45,10 +45,8 @@ int write_history(info_t *info)
 	for (node = info->history; node; node = node->next)
 	{
 
-		_dutsfd(node->str, ft);
-		_dutfd('\n', ft);
 
-		_dutsfd(node->str, ft);
+		_putsfd(node->str, ft);
 		_putft('\n', ft);
 
 	}
