@@ -5,7 +5,7 @@
  *
  * Return: Nothing
  */
-void _eputs(char *str)
+void _eputsft(char *str)
 {
 	int k = 0;
 
@@ -13,7 +13,7 @@ void _eputs(char *str)
 		return;
 	while (str[k] != '\0')
 	{
-		_eputchar(str[k]);
+		_eputcharr(str[k]);
 		k++;
 	}
 }
@@ -25,7 +25,7 @@ void _eputs(char *str)
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _eputchar(char c)
+int _eputcharr(char c)
 {
 	static int k;
 	static char buf[WRITE_BUF_SIZE];
@@ -66,13 +66,13 @@ int _putfd(char c, int fd)
 
 
 /**
- * _putsfd - prints an input string
+ * _eputsfd - prints an input string
  * @str: the string to be printed
  * @fd: the filedescriptor to write to
  *
  * Return: the number of chars put
  */
-int _putsfd(char *str, int fd)
+int _eputsfd(char *str, int fd)
 {
 	int k = 0;
 

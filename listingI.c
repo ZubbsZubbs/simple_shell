@@ -19,12 +19,12 @@ size_t list_len(const list_t *f)
 }
 
 /**
- * list_to_strings - converts a linked list to an array of strings
+ * list_to_stringsnow - converts a linked list to an array of strings
  * @head: pointer to the head of the linked list
  *
  * Return: a pointer to an array of strings
  */
-char **list_to_strings(list_t *head)
+char **list_to_stringsnow(list_t *head)
 {
 	list_t *node = head;
 	size_t k = list_len(head), j;
@@ -66,11 +66,11 @@ size_t print_list(const list_t *f)
 
 	while (f)
 	{
-		_puts(convert_number(h->num, 10, 0));
-		_putchar(':');
-		_putchar(' ');
-		_puts(f->str ? f->str : "(nil)");
-		_puts("\n");
+		_eputsft(convert_number(h->num, 10, 0));
+		_eputcharr(':');
+		_eputcharr(' ');
+		_eputsft(f->str ? f->str : "(nil)");
+		_eputsft("\n");
 		f = f->next;
 		k++;
 	}

@@ -29,7 +29,7 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 			if ((*buf)[m - 1] == '\n')
 			{
 				(*buf)[m - 1] = '\0';
-				r--;
+				m--;
 			}
 			info->linecount_flag = 1;
 			remove_comments(*buf);
@@ -57,19 +57,19 @@ ssize_t get_input(info_t *info)
 	ssize_t m = 0;
 	char **buf_p = &(info->arg), *p;
 
-	_putchar(BUF_FLUSH);
+	_eputcharr(BUF_FLUSH);
 	m = input_buf(info, &buf, &len);
-	if (r == -1) /* EOF */
+	if (m == -1) /* EOF */
 		return (-1);
 	if (len)
 	{
 		j = i;
 		p = buf + i;
 
-		check_chain(info, buf, &j, i, len);
+		check_chainnow(info, buf, &j, i, len);
 		while (j < len)
 		{
-			if (is_chain(info, buf, &j))
+			if (is_chainnow(info, buf, &j))
 				break;
 			j++;
 		}
@@ -134,7 +134,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 		i = len = 0;
 
 	m = read_buf(info, buf, &len);
-	if (r == -1 || (m == 0 && len == 0))
+	if (m == -1 || (m == 0 && len == 0))
 		return (-1);
 
 	c = _strchr(buf + i, '\n');
@@ -166,7 +166,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
  */
 void sigintHandler(__attribute__((unused))int sig_num)
 {
-	_puts("\n");
-	_puts("$ ");
-	_putchar(BUF_FLUSH);
+	_eputsft("\n");
+	_eputsft("$ ");
+	_eputcharr(BUF_FLUSH);
 }

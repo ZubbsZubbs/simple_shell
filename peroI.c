@@ -1,4 +1,4 @@
-include "myshell.h"
+#include "myshell.h"
 
 /**
  * _errtoaa - converts a string to an integer
@@ -38,13 +38,13 @@ int _errtoaa(char *s)
  */
 void print_error(info_t *info, char *estr)
 {
-	_eputs(info->fname);
-	_eputs(": ");
+	_eputsft(info->fname);
+	_eputsft(": ");
 	print_d(info->line_count, STDERR_FILENO);
-	_eputs(": ");
-	_eputs(info->argv[0]);
-	_eputs(": ");
-	_eputs(estr);
+	_eputsft(": ");
+	_eputsft(info->argv[0]);
+	_eputsft(": ");
+	_eputsft(estr);
 }
 
 /**
@@ -56,16 +56,16 @@ void print_error(info_t *info, char *estr)
  */
 int print_d(nt input, int fd)
 {
-	int (*__putchar)(char) = _putchar;
+	int (*_eputcharr)(char) = _eputcharr;
 	int j, count = 0;
 	unsigned int _abs_, current;
 
 	if (fd == STDERR_FILENO)
-		__putchar = _eputchar;
+		_eputcharr = _eputcharr;
 	if (input < 0)
 	{
 		_abs_ = -input;
-		__putchar('-');
+		_eputcharr('-');
 		count++;
 	}
 	else
@@ -75,12 +75,12 @@ int print_d(nt input, int fd)
 	{
 		if (_abs_ / j)
 		{
-			__putchar('0' + current / j);
+			_eputcharr('0' + current / j);
 			count++;
 		}
 		current %= j;
 	}
-	__putchar('0' + current);
+	_eputcharr('0' + current);
 	count++;
 
 	return (count);

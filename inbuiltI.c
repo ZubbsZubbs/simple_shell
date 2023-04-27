@@ -74,10 +74,10 @@ int print_alias(list_t *node)
 	{
 		ptr = _strchr(node->str, '=');
 		for (c = node->str; c <= p; c++)
-		_putchar(*c);
-		_putchar('\'');
-		_puts(ptr + 1);
-		_puts("'\n");
+		_eputcharr(*c);
+		_eputcharr('\'');
+		_eputsft(ptr + 1);
+		_eputsft("'\n");
 		return (0);
 	}
 	return (1);
