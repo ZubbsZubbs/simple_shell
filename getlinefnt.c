@@ -29,11 +29,11 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 			if ((*buf)[m - 1] == '\n')
 			{
 				(*buf)[m - 1] = '\0';
-				r--;
+				m--;
 			}
 			info->linecount_flag = 1;
 			remove_comments(*buf);
-			build_history_list(info, *buf, info->histcount++);
+			build_histo_list(info, *buf, info->histcount++);
 			/* if (_strchr(*buf, ';')) is this a command chain? */
 			{
 				*len = m;
@@ -59,17 +59,17 @@ ssize_t get_input(info_t *info)
 
 	_putchar(BUF_FLUSH);
 	m = input_buf(info, &buf, &len);
-	if (r == -1) /* EOF */
+	if (m == -1) /* EOF */
 		return (-1);
 	if (len)
 	{
 		j = i;
 		p = buf + i;
 
-		check_chain(info, buf, &j, i, len);
+		check_chainnow(info, buf, &j, i, len);
 		while (j < len)
 		{
-			if (is_chain(info, buf, &j))
+			if (is_chainnow(info, buf, &j))
 				break;
 			j++;
 		}
@@ -134,7 +134,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 		i = len = 0;
 
 	m = read_buf(info, buf, &len);
-	if (r == -1 || (m == 0 && len == 0))
+	if (m == -1 || (m == 0 && len == 0))
 		return (-1);
 
 	c = _strchr(buf + i, '\n');
