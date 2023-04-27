@@ -56,8 +56,8 @@ int find_inbuilt(info_t *info)
 		{"env", _cdenv},
 		{"help", _cdhelp},
 		{"history", _cdhisto},
-		{"setenv", _mysetenv},
-		{"unsetenv", _myunsetenv},
+		{"setenv", _cdsetenv},
+		{"unsetenv", _cdunsetenv},
 		{"cd", _cdcd},
 		{"alias", _cdalias},
 		{NULL, NULL}
